@@ -1,0 +1,128 @@
+.Navbar {
+  height: 50px;
+  background: orange;
+  opacity: 0.8;
+  position: static;
+  top: 0;
+  left: 0;
+}
+
+@-webkit-keyframes tapAnimation {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.96);
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes tapAnimation {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.96);
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.Ping {
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  column-break-inside: avoid;
+  break-inside: avoid;
+  position: relative;
+  display: inline-block;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 40px;
+  opacity: 1;
+  box-sizing: border-box;
+}
+
+.Ping::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+}
+
+.Ping:hover::before {
+  background: rgba(0, 0, 0, 0.05);
+  -webkit-animation: tapAnimation 0.25s cubic-bezier(0.31, 1, 0.34, 1) forwards;
+  animation: tapAnimation 0.25s cubic-bezier(0.31, 1, 0.34, 1) forwards;
+}
+
+.Ping img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.Ping p {
+  font: 12px/18px Arial, sans-serif;
+  color: #333;
+  margin: 0;
+  width: 96%;
+  margin-left: 2%;
+  word-break: break-wrod;
+  font-size: 14px;
+  font-family: Helvetica Neue,Helvetica,arial,sans-serif;
+  font-weight: bold;
+  color: #555555;
+}
+
+.Ping .img-wrapper {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.Ping .img-wrapper::before {
+  content: '';
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  background: transparent;
+  border-radius: 8px;
+}
+
+.Ping .img-wrapper:hover::before {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.grid {
+  width: 90%;
+  margin-left: 41.5px;
+  margin-right: 41.5px;
+  padding: 24px 0;
+  /*
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+  */
+  column-width: 256px;
+  -webkit-column-gap: 10px;
+  -moz-column-gap: 10px;
+  column-gap: 10px;
+  -webkit-column-fill: auto;
+  -moz-column-fill: auto;
+  column-fill: auto;
+  cursor: zoom-in;
+}

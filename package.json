@@ -3,17 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "classnames": "^2.2.5",
     "cors": "^2.8.4",
     "express": "^4.15.4",
     "google-images": "^2.1.0",
     "jquery": "^3.2.1",
+    "node-sass": "^4.5.3",
+    "normalize.css": "^7.0.0",
+    "npm-run-all": "^4.1.1",
+    "onchange": "^3.2.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-scripts": "1.0.12"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-scss": "node-sass --output-style expanded src/scss/index.scss src/index.build.css",
+    "watch-scss": "onchange \"src/scss/**/*.scss\" -- npm run build-scss",
+    "start-js": "react-scripts start",
+    "start": "npm run build-scss && run-p watch-scss start-js",
+    "build": "npm run build-scss && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
