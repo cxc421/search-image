@@ -10,6 +10,16 @@ body {
   overflow-y: scroll;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #bd081c;
+}
+
 .Navbar {
   position: relative;
   position: fixed;
@@ -236,24 +246,227 @@ body {
   width: 391px;
 }
 
-.grid {
-  width: calc(100% - 83px);
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 56px;
-  padding: 24px 0;
-  /*
-  -webkit-column-count: 3;
-  -moz-column-count: 3;
-  column-count: 3;
-  */
-  column-width: 256px;
-  -webkit-column-gap: 10px;
-  -moz-column-gap: 10px;
-  column-gap: 10px;
-  -webkit-column-fill: auto;
-  -moz-column-fill: auto;
-  column-fill: auto;
+.Slide {
+  position: fixed;
+  top: 65px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 65px);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.Slide .content-wrapper {
+  height: 100%;
+  position: relative;
+  width: calc(100% - 190px);
+  margin: 0 auto;
+}
+
+.Slide .main-content {
+  position: relative;
+  height: calc(100% - 50px - 5px);
+  position: relative;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.Slide .main-content::after {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.Slide .main-content > * {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.Slide .main-content img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.Slide .main-content .loading-img {
+  display: none;
+}
+
+.Slide .main-content.loading > img:not(.loading-img) {
+  display: none;
+}
+
+.Slide .main-content.loading .loading-img {
+  display: inline;
+}
+
+.Slide .footer-content {
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0 20px;
+  width: 100%;
+  margin: 5px auto 0;
+  height: 50px;
+  background: black;
+  color: white;
+  text-align: center;
+}
+
+.Slide .footer-content::after {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.Slide .footer-content > * {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.Slide .left-button {
+  position: absolute;
+  background: url(https://i2.bahamut.com.tw/vimg_l2.gif) no-repeat center center;
+  opacity: 0.5;
+  cursor: pointer;
+  width: 50px;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.Slide .left-button:hover {
+  opacity: 1;
+}
+
+.Slide .right-button {
+  position: absolute;
+  background: url(https://i2.bahamut.com.tw/vimg_r2.gif) no-repeat center center;
+  opacity: 0.5;
+  cursor: pointer;
+  width: 50px;
+  height: 100%;
+  top: 0;
+  right: 0;
+}
+
+.Slide .right-button:hover {
+  opacity: 1;
+}
+
+.Slide .close-button {
+  position: absolute;
+  background: url(https://i2.bahamut.com.tw/vimg_x.gif) no-repeat center center;
+  opacity: 0.5;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  top: 0;
+  right: 0;
+}
+
+.Slide .close-button:hover {
+  opacity: 1;
+}
+
+.SlideInner {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 105px;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.8s ease 1s;
+  -moz-transition: opacity 0.8s ease 1s;
+  -webkit-transition: opacity 0.8s ease 1s;
+  -o-transition: opacity 0.8s ease 1s;
+}
+
+.SlideInner:hover {
+  opacity: 1;
+  transition: opacity 1s ease 0.2s;
+  -moz-transition: opacity 1s ease 0.2s;
+  -webkit-transition: opacity 1s ease 0.2s;
+  -o-transition: opacity 1s ease 0.2s;
+}
+
+.SlideInner .background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.5;
+  z-index: 5;
+}
+
+.SlideInner .inner-list-warpper {
+  position: relative;
+  height: 100%;
+  width: 990px;
+  z-index: 20;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.SlideInner .inner-list {
+  position: relative;
+  position: absolute;
+  height: 100%;
+  display: inline-block;
+  left: 50%;
+  z-index: 10;
+}
+
+.SlideInner .inner-list::after {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.SlideInner .inner-list > * {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.SlideInner .inner-item {
+  position: relative;
+  height: 86px;
+  width: 86px;
+  border: 1px solid white;
+  margin: 0 2px;
+  overflow: hidden;
+  opacity: 0.5;
+  cursor: pointer;
+  background: black;
+}
+
+.SlideInner .inner-item::after {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.SlideInner .inner-item > * {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.SlideInner .inner-item:hover {
+  opacity: 1;
+}
+
+.SlideInner .select-inner-item {
+  opacity: 1;
 }
 
 .wrapper {

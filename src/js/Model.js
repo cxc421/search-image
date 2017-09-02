@@ -3,10 +3,12 @@ import Event from './Event';
 import * as EventType from './EventType';
 //-------------- BEGIN MODULE SCOPE VARIABLES ------------//
 const gData = {
-	isSearching: false,
-	imageList  : getDemoList(),
-	searchName : '',
-	page       : 1,
+	isSearching      : false,
+	imageList        : getDemoList(),
+	searchName       : '',
+	page             : 1,
+	curSelectImgIndex: 0,
+	showSlide        : false,
 };
 //-------------- END MODULE SCOPE VARIABLES ------------//
 
@@ -25,6 +27,14 @@ function updateSearchStatus(type) {
 function updateImageList(newList) {
 	gData.imageList = newList.slice();
 	Event.trigger(EventType.IMGLIST_CHANGE, newList);
+}
+function setSlideStatus (newStatus) {
+	gData.showSlide = newStatus;
+	Event.trigger(EventType.SLIDE_STATUS_CHANGE, newStatus, true);	
+}
+function setSelectIdx (newIdx) {
+	gData.curSelectImgIndex = newIdx;
+	Event.trigger(EventType.SELECT_INDEX_CHANGE, newIdx, true);		
 }
 function resetPage() {
 	gData.page = 1;	
@@ -68,6 +78,7 @@ function startNewSearch (searchName) {
 	resetPage();
 	setSearchName(searchName);
 	//resetRequestStatus();
+	setSelectIdx(0);
 	makeRequest();
 }
 function makeNextSearch () {
@@ -79,6 +90,20 @@ function makeNextSearch () {
 function getData() {
 	return gData;
 }
+function toggleSlideDisplay({show}) {
+	if (show === undefined) {
+		console.error('[Model][toggleSlideDisplay]: wrong parameter');
+		return false;
+	}
+	setSlideStatus(!!show);
+}
+function updateSelectIndex (idx) {
+	if (idx < 0 || idx >= gData.imageList.length ) {
+		console.log('[Model][updateSelectIndex]: wrong index = ' + idx);
+		return false;
+	}
+	setSelectIdx(+idx);
+}
 //-------------- END PUBLIC METHOD ----------------//
 
 //---------------BEGIN INITIALIZATION-------------//
@@ -87,4 +112,4 @@ function getData() {
 })();
 //---------------END INITIALIZATION-------------//
 
-export default {startNewSearch, makeNextSearch, getData};
+export default {startNewSearch, makeNextSearch, getData, toggleSlideDisplay, updateSelectIndex};

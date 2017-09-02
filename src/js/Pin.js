@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+import Model from './Model';
 
 class Pin extends Component {
 	constructor() {
 		super(...arguments);
 		this.onLoadImgError = this.onLoadImgError.bind(this);
+		this.onClickPin = this.onClickPin.bind(this);
 
 		const {url, description} = this.props;
 		this.state = {
@@ -24,10 +26,14 @@ class Pin extends Component {
 			this.setState({url: this.props.thumbnail.url});			
 		}, 100);
 	}
+	onClickPin() {
+		Model.updateSelectIndex(this.props.idx);
+		Model.toggleSlideDisplay({show:true});
+	}
 	render() {
 		const {url, description} = this.state;
 		return (
-	    <div className="Pin">
+	    <div className="Pin" onClick={this.onClickPin}>
 	      <div className="img-wrapper">
 	        <img src={url} alt={url} onError={this.onLoadImgError}/>
 	      </div>

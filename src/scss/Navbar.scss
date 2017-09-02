@@ -1,7 +1,7 @@
 .Navbar {	
 	@include setChildVa();
 	position: fixed;	
-	height: 65px;
+	height: $NavBarHeight;
 	//background: orange;
 	background: white;
 	opacity: 1;	

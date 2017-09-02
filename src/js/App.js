@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import NavBar from './NavBar';
 import Pin from './Pin';
+import Slide from './Slide';
 import Model from './Model';
 import Event from './Event';
 import * as EventType from './EventType';
@@ -12,8 +13,8 @@ class App extends Component {
 		this.onImageListUpdate = this.onImageListUpdate.bind(this);
 		this.onWindowResize = this.onWindowResize().bind(this);
 		this.state = {
-			imgList: Model.getData().imageList.slice(),
-			colNum : 0
+			imgList  : Model.getData().imageList.slice(),
+			colNum   : 0			
 		};
 	}
 	makeDemoList () {
@@ -60,7 +61,7 @@ class App extends Component {
 			for (let i = startIdx; i < imgLength; i += colNum) {
 				//itemJSX.push(<div className="demo" key={`img-${i}`}>{i+1}</div>);
 				let imgObj = imgList[i];
-				itemJSX.push(<Pin {...imgObj} key={i} />);
+				itemJSX.push(<Pin {...imgObj} key={i} idx={i}/>);
 			}
 			return itemJSX;
 		};
@@ -77,14 +78,10 @@ class App extends Component {
 				<NavBar />
 				<div className="wrapper">					
 					{ 
-						/*
-						imgList.map((imgObj, idx)=>{
-							return <Pin {...imgObj} key={idx} />;
-						})
-						*/
 						colJSX
 					}
 				</div>
+				<Slide />
 			</div>
 		);
 	}

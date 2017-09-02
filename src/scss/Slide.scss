@@ -1,0 +1,90 @@
+.Slide {
+	position: fixed;
+	top: $NavBarHeight;
+	left: 0;
+	width: 100%;
+	height: calc(100% - #{$NavBarHeight});
+	background: rgba(0,0,0,0.5);
+
+	.content-wrapper {
+		height: 100%;
+		position: relative;
+		width: calc(100% - #{$SlideMarginWidth});
+		margin: 0 auto;
+	}
+
+	.main-content {		
+		@include setChildVa();
+		height: calc(100% - #{$SlideFooterHeight} - #{$SlideMainFooterDistance});
+		position: relative;		
+		width: 100%;		
+		background: rgba(0,0,0,0.8);
+		text-align: center;
+		
+		img {
+			max-width: 100%;
+			max-height: 100%;
+		}
+		.loading-img {
+			display: none;
+		}
+
+		&.loading {
+			&>img:not(.loading-img) {
+				display: none;
+			}
+			.loading-img {
+				display: inline;
+			}
+		}
+	}
+
+	.footer-content {
+		//width: calc(100% - #{$SlideMarginWidth});
+		@include setChildVa();
+		@include setTextAutoHide();
+		padding: 0 20px;
+		width: 100%;
+		margin: $SlideMainFooterDistance auto 0;
+		height: $SlideFooterHeight;
+		background: rgb(0,0,0);
+		color: white;
+		text-align: center;
+	}
+
+	@mixin slideButton($url) {
+		//width: 50px;
+		//height: 100%;
+		position: absolute;
+		//#{$direction}: 0;
+		//top: 0;
+		background: $url no-repeat center center;
+		opacity: 0.5;
+		cursor: pointer;
+		&:hover {
+			opacity: 1;
+		}	
+	}
+
+	.left-button {
+		@include slideButton (url(https://i2.bahamut.com.tw/vimg_l2.gif) );
+		width: 50px;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+	.right-button {
+		@include slideButton (url(https://i2.bahamut.com.tw/vimg_r2.gif) );	
+		width: 50px;
+		height: 100%;
+		top: 0;
+		right: 0;		
+	}
+	.close-button {
+		@include slideButton (url(https://i2.bahamut.com.tw/vimg_x.gif) );			
+		width: 50px;
+		height: 50px;
+		top: 0;
+		right: 0;		
+	}
+}

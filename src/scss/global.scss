@@ -12,6 +12,15 @@ body {
 	overflow-y: scroll;
 }
 
+a {
+	text-decoration: none;
+	color: white;
+	&:hover {
+		text-decoration: underline;
+		color: rgb(189,8,28);
+	}
+}
+
 @mixin setChildVa() {
 	position: relative;
 	&::after {
@@ -24,5 +33,11 @@ body {
 		vertical-align: middle ;
 		display: inline-block;
 	}
+}
+
+@mixin setTextAutoHide() {
+  text-overflow : ellipsis;    
+  white-space   : nowrap;
+  overflow      : hidden;  	
 }
 
