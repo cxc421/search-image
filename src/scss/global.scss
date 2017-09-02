@@ -1,0 +1,28 @@
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+	//background: url(http://subtlepatterns.com/patterns/scribble_light.png);
+	//background: url(https://www.toptal.com/designers/subtlepatterns/patterns/sayagata-400px.png);
+	overflow-y: scroll;
+}
+
+@mixin setChildVa() {
+	position: relative;
+	&::after {
+		content: '';
+	  display: inline-block;
+	  vertical-align: middle ;
+	  height: 100%;					
+	}	
+	&>*{
+		vertical-align: middle ;
+		display: inline-block;
+	}
+}
+

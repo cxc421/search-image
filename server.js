@@ -1,8 +1,11 @@
-var path = require('path');
-var express = require('express');
-var cors = require('cors');
-var app = express();
-var staticPath = path.join(__dirname, '/public');
+const path = require('path');
+const express = require('express');
+const cors = require('cors');
+const app = express();
+const fs = require('fs');
+
+const staticPath = path.join(__dirname, '/public');
+const cachePath = path.join(__dirname, '/cache_img');
 
 const CSE_ID = '016012605685320780615:pie5uyhrtlw';
 const API_KEY = 'AIzaSyDz9PoIWN6sw1-a1n4HvJld3UPco1GV7L0';	
@@ -36,8 +39,20 @@ function googleSearch (searchName, page, callback) {
 					images: images,
 					time  : Date.now()
 				};
+				saveImageToFile(cacheName, images);
 			});
 	}
+}
+
+function saveImageToFile(cacheName, images) {
+	const content = JSON.stringify(images);
+	const fileName =  path.join( cachePath,  cacheName + '.cache' );
+	fs.writeFile(fileName, content, 'utf8', function (err) {
+	    if (err) {
+	        return console.log(err);
+	    }
+	    console.log(`The file ${fileName} was saved!`);
+	}); 	
 }
 
 function checkCacheOutdated () {

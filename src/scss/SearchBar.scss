@@ -1,0 +1,60 @@
+.SearchBar {
+  display: inline-block;  
+  border: 1px solid #3b5998;
+  border-radius: 3px;
+  box-sizing: border-box;
+  height: 26px;
+  padding-left: 7px;
+  padding-right: 48px;    
+  background: white;
+  position: relative;
+  //width: 448px;
+  
+  button {
+    position: absolute;
+    bottom: 0;
+    right: 0;    
+    top: 0;
+    z-index: 1;
+    
+    background: #f6f7f9;    
+    border: none;   
+    border-radius: 0 2px 2px 0;        
+    cursor: pointer;
+    text-align: center;            
+    color: #4b4f56;
+    padding: 0 16px;
+    
+    &::before {
+      content: '';
+      display: inline-block;
+      height: 20px;
+      vertical-align: middle;      
+    }
+    
+    i {
+      font-size: 16px;
+      //vertical-align: middle;      
+    }
+
+    &:hover {
+    	background: #e9ebee;
+    }
+  }
+
+  input {
+    box-sizing: border-box;
+    border: none;   
+    text-shadow: none;
+    outline: 1px solid rgba(0, 0, 0, 0);
+    
+    font-size: 15px;
+    text-overflow: ellipsis;
+    padding: 3px 0 0;
+    line-height: 18px;
+
+    width: 391px;
+    //width: calc(100% - 448px + 391px + 57px);
+    //min-width: 90px; 
+  }
+}

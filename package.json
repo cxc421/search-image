@@ -20,7 +20,8 @@
     "build-scss": "node-sass --output-style expanded src/scss/index.scss src/index.build.css",
     "watch-scss": "onchange \"src/scss/**/*.scss\" -- npm run build-scss",
     "start-js": "react-scripts start",
-    "start": "npm run build-scss && run-p watch-scss start-js",
+    "start-img-search-server": "node server.js",
+    "start": "npm run build-scss && run-p watch-scss start-js start-img-search-server",
     "build": "npm run build-scss && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
