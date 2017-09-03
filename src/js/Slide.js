@@ -43,7 +43,7 @@ class Slide extends Component {
 		setTimeout(()=>{
 			console.log('Retry....');				
 			this.setState({url: thumbnailUrl});			
-		}, 100);		
+		}, 1000);		
 	}
 	onLoadImgSuccess () {
 		const {url} = this.state;
