@@ -11,6 +11,11 @@
   -moz-transition: opacity 0.8s ease 1s;
   -webkit-transition: opacity 0.8s ease 1s;
   -o-transition: opacity 0.8s ease 1s;	
+
+	&.is_mobile {
+		opacity: 1;
+	}
+
 	&:hover {
 		opacity: 1;
 		transition: opacity 1s ease 0.2s;

@@ -302,9 +302,6 @@ a:hover {
 
 .Slide .footer-content {
   position: relative;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
   padding: 0 20px;
   width: 100%;
   margin: 5px auto 0;
@@ -326,11 +323,19 @@ a:hover {
   display: inline-block;
 }
 
+.Slide .footer-content .link-wrapper {
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .Slide .left-button {
   position: absolute;
   background: url(https://i2.bahamut.com.tw/vimg_l2.gif) no-repeat center center;
   opacity: 0.5;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   width: 50px;
   height: 100%;
   top: 0;
@@ -346,6 +351,7 @@ a:hover {
   background: url(https://i2.bahamut.com.tw/vimg_r2.gif) no-repeat center center;
   opacity: 0.5;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   width: 50px;
   height: 100%;
   top: 0;
@@ -361,6 +367,7 @@ a:hover {
   background: url(https://i2.bahamut.com.tw/vimg_x.gif) no-repeat center center;
   opacity: 0.5;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   width: 50px;
   height: 50px;
   top: 0;
@@ -416,16 +423,19 @@ a:hover {
 
 @media screen and (max-width: 900px) {
   .Slide .content-wrapper {
-    width: calc(100% - 96px);
+    width: calc(100% - 0px);
   }
-  .Slide .download-btn {
-    display: none;
+  .Slide .footer-content .link-wrapper {
+    max-width: 373px;
   }
 }
 
 @media screen and (max-width: 600px) {
   .Slide .content-wrapper {
     width: calc(100% - 0px);
+  }
+  .Slide .download-btn {
+    display: none;
   }
 }
 
@@ -444,6 +454,10 @@ a:hover {
   -moz-transition: opacity 0.8s ease 1s;
   -webkit-transition: opacity 0.8s ease 1s;
   -o-transition: opacity 0.8s ease 1s;
+}
+
+.SlideInner.is_mobile {
+  opacity: 1;
 }
 
 .SlideInner:hover {

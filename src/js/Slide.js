@@ -122,8 +122,10 @@ class Slide extends Component {
 						<img src={url} alt={url} onLoad={this.onLoadImgSuccess} onError={this.onLoadImgError} />					
 						<SlideInner />
 					</div>
-					<div className="footer-content">												
-						<a href={parentPage} target="_blank">{description}</a>	
+					<div className="footer-content">	
+						<div className="link-wrapper">
+							<a href={parentPage} target="_blank">{description}</a>	
+						</div>																	
 						<div className="download-btn" onClick={this.onClickDownloadBtn}>Download</div>					
 					</div>
 					<div className="left-button" onClick={this.onClickLeftBtn}></div>					

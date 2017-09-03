@@ -41,8 +41,7 @@
 
 	.footer-content {
 		//width: calc(100% - #{$SlideMarginWidth});
-		@include setChildVa();
-		@include setTextAutoHide();
+		@include setChildVa();		
 		padding: 0 20px;
 		width: 100%;
 		margin: $SlideMainFooterDistance auto 0;
@@ -50,6 +49,11 @@
 		background: rgb(0,0,0);
 		color: white;
 		text-align: center;
+		.link-wrapper {
+			display: inline-block;
+			@include setTextAutoHide();
+			//max-width: 373px;
+		}
 	}
 
 	@mixin slideButton($url) {
@@ -64,6 +68,7 @@
 		&:hover {
 			opacity: 1;
 		}	
+		-webkit-tap-highlight-color: transparent;	
 	}
 
 	.left-button {
@@ -71,7 +76,7 @@
 		width: 50px;
 		height: 100%;
 		top: 0;
-		left: 0;
+		left: 0;			
 	}
 	.right-button {
 		@include slideButton (url(https://i2.bahamut.com.tw/vimg_r2.gif) );	
@@ -136,9 +141,11 @@
 		.content-wrapper {
 			width: calc(100% - #{$SlideMarginWidth_900px});
 		}		
-		.download-btn {
-			display: none;
-		}
+		.footer-content {
+			.link-wrapper {
+				max-width: 373px;
+			}
+		}		
 	}
 }
 
@@ -146,6 +153,9 @@
 	.Slide {
 		.content-wrapper {
 			width: calc(100% - #{$SlideMarginWidth_600px});
+		}		
+		.download-btn {
+			display: none;
 		}		
 	}
 }

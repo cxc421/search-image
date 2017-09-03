@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import NavBar from './NavBar';
+import NavBar from './Navbar';
 import Pin from './Pin';
 import Slide from './Slide';
 import Model from './Model';

@@ -21,10 +21,10 @@ class Pin extends Component {
 			console.error('Load failed');
 			return false;
 		}
-		setTimeout(()=>{
+		//setTimeout(()=>{
 			//console.log('Retry....');
 			this.setState({url: this.props.thumbnail.url});			
-		}, 100);
+		//}, 100);
 	}
 	onClickPin() {
 		Model.updateSelectIndex(this.props.idx);
