@@ -5,6 +5,7 @@ import Model from './Model';
 import SlideInner from './SlideInner';
 import classNames from 'classnames';
 import loadingImg from '../img/Ellipsis.svg';
+import $ from 'jquery';
 
 class Slide extends Component {
 	constructor() {
@@ -19,6 +20,7 @@ class Slide extends Component {
 		this.onClickLeftBtn = this.onClickLeftBtn.bind(this);
 		//this.onSelectIndexChange = this.onSelectIndexChange.bind(this);
 		this.onClickSlide = this.onClickSlide.bind(this);
+		this.onClickDownloadBtn = this.onClickDownloadBtn.bind(this);
 
 		const {curSelectImgIndex, imageList, showSlide} = Model.getData();
 		const selectImg = imageList[curSelectImgIndex];
@@ -43,7 +45,7 @@ class Slide extends Component {
 		setTimeout(()=>{
 			console.log('Retry....');				
 			this.setState({url: thumbnailUrl});			
-		}, 1000);		
+		}, 100);		
 	}
 	onLoadImgSuccess () {
 		const {url} = this.state;
@@ -88,6 +90,19 @@ class Slide extends Component {
 			this.onClickCloseBtn();
 		}
 	}
+	onClickDownloadBtn () {
+		var nodeA;
+		if ( (nodeA = document.getElementById('export-download-link')) === null ) {
+			nodeA = document.createElement("A");
+			nodeA.setAttribute('id', 'export-download-link');
+			nodeA.setAttribute('style', 'display:none;');
+			nodeA.setAttribute('download', '');
+			nodeA.setAttribute('target', 'ifr');
+			document.body.appendChild(nodeA);
+		}
+		nodeA.setAttribute('href', this.state.url);
+		nodeA.click();	
+	}
 	componentDidMount() {
 		Event.on(EventType.SLIDE_STATUS_CHANGE, this.onSlideStatusChange);
 		Event.on(EventType.SELECT_INDEX_CHANGE, this.updateImageCheck);
@@ -108,11 +123,12 @@ class Slide extends Component {
 						<SlideInner />
 					</div>
 					<div className="footer-content">												
-						<a href={parentPage} target="_blank">{description}</a>						
+						<a href={parentPage} target="_blank">{description}</a>	
+						<div className="download-btn" onClick={this.onClickDownloadBtn}>Download</div>					
 					</div>
 					<div className="left-button" onClick={this.onClickLeftBtn}></div>					
 					<div className="right-button" onClick={this.onClickRightBtn}></div>
-					<div className="close-button" onClick={this.onClickCloseBtn}></div>
+					<div className="close-button" onClick={this.onClickCloseBtn}></div>					
 				</div>
 			</div>
 		);
